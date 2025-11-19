@@ -1,6 +1,27 @@
 import 'dotenv/config'
 import * as fs from 'node:fs'
 import sourceMapSupport from 'source-map-support'
+import { createRoot } from 'react-dom/client'
+
+const root = createRoot(document.getElementById("root"))
+
+import Header from "./components/Header"
+import Main from "./components/Main"
+import Footer from "./components/Footer"
+
+function Page () {
+	return (
+		<>
+			<Header />
+			<Main />
+			<Footer />
+		</>
+	)
+}
+
+root.render(
+	<Page />
+)
 
 sourceMapSupport.install({
 	retrieveSourceMap: function (source) {
