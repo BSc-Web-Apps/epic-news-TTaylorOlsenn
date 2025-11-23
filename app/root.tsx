@@ -30,8 +30,12 @@ export default function App() {
 				<div className="flex-1 bg-blue-500">
 					<main className="grid h-full place-items-center">
 						<h1 className="p-8 text-mega">Epic News</h1>
+						<div className="p-8 place-items-center">
+							<h3 className="text-h3 mb-2">Meet our team</h3>
+							<p className="text-gray-900">We're a dynamic group of individuals who are passionate about what we do.</p>
+						</div>
 						<div>
-							<div className="flex justify-center space-x-32">
+							<div className="flex justify-center space-x-16">
 							<TeamMemberCard image={portrait1} name={`Vasiliy Alyosha`} description={`Senior Designer`}>
 							</TeamMemberCard>
 							<TeamMemberCard image={portrait2} name={`Byron Darrell`} description={`Principal Designer`}>
