@@ -5,9 +5,10 @@ import { GeneralErrorBoundary } from './components/error-boundary.tsx'
 import Document from './components/shared-layout/Document.tsx'
 import { useNonce } from './utils/nonce-provider.ts'
 import rootLinkElements from './utils/providers/rootLinkElements.ts'
-import portrait from '.app/assets/jpg/portrait-01.jpg'
 import HeroCallToAction from '~/components/organisms/Hero/HeroCallToAction.tsx'
 import heroImage from '~/assets/jpg/sample-hero.jpg'
+import TeamMemberCard from '#app/components/organisms/TeamMemberCard.tsx'
+import portrait from '#app/assets/jpg/portrait-01.jpg'
 import { text } from 'node:stream/consumers'
 import React from 'react'
 
@@ -27,6 +28,11 @@ export default function App() {
 				<div className="flex-1 bg-blue-500">
 					<main className="grid h-full place-items-center">
 						<h1 className="text-mega">Epic News</h1>
+						<div>
+							<TeamMemberCard image={portrait} name={`Bob`} description={`Top Geezer`}>
+								
+							</TeamMemberCard>
+						</div>
 						<div className="w-full py-16">
 							<HeroCallToAction image={heroImage} imageRight={true} hasBackgroundColour={true}>
 							<div className="flex flex-col gap-8 px-8">
