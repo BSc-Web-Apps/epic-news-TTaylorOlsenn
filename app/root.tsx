@@ -8,7 +8,9 @@ import rootLinkElements from './utils/providers/rootLinkElements.ts'
 import HeroCallToAction from '~/components/organisms/Hero/HeroCallToAction.tsx'
 import heroImage from '~/assets/jpg/sample-hero.jpg'
 import TeamMemberCard from '#app/components/organisms/TeamMemberCard.tsx'
-import portrait from '#app/assets/jpg/portrait-01.jpg'
+import portrait1 from '#app/assets/jpg/portrait-01.jpg'
+import portrait2 from '#app/assets/jpg/portrait-02.jpg'
+import portrait3 from '#app/assets/jpg/portrait-03.jpg'
 import { text } from 'node:stream/consumers'
 import React from 'react'
 
@@ -27,11 +29,16 @@ export default function App() {
 			<div className="flex h-screen flex-col justify-between">
 				<div className="flex-1 bg-blue-500">
 					<main className="grid h-full place-items-center">
-						<h1 className="text-mega">Epic News</h1>
+						<h1 className="p-8 text-mega">Epic News</h1>
 						<div>
-							<TeamMemberCard image={portrait} name={`Bob`} description={`Top Geezer`}>
-								
+							<div className="flex justify-center space-x-32">
+							<TeamMemberCard image={portrait1} name={`Vasiliy Alyosha`} description={`Senior Designer`}>
 							</TeamMemberCard>
+							<TeamMemberCard image={portrait2} name={`Byron Darrell`} description={`Principal Designer`}>
+							</TeamMemberCard>
+							<TeamMemberCard image={portrait3} name={`Brittani Windsor`} description={`VP, User Experience`}>
+							</TeamMemberCard>
+							</div>
 						</div>
 						<div className="w-full py-16">
 							<HeroCallToAction image={heroImage} imageRight={true} hasBackgroundColour={true}>
