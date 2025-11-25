@@ -13,6 +13,7 @@ import portrait2 from '#app/assets/jpg/portrait-02.jpg'
 import portrait3 from '#app/assets/jpg/portrait-03.jpg'
 import { text } from 'node:stream/consumers'
 import React from 'react'
+import { ThemeSwitch, useTheme } from './routes/resources+/theme-switch.tsx'
 
 export const links: Route.LinksFunction = () => {
 	return rootLinkElements
@@ -23,9 +24,10 @@ export { headers, loader } from './__root.server.tsx'
 export default function App() {
 	const data = useLoaderData<typeof loader | null>()
 	const nonce = useNonce()
+	const theme = useTheme()
 
 	return (
-		<Document nonce={nonce} honeyProps={data?.honeyProps}>
+		<Document theme={theme} nonce={nonce} honeyProps={data?.honeyProps}>
 			<div className="flex h-screen flex-col justify-between">
 				<div className="flex-1 bg-blue-500">
 					<main className="grid h-full place-items-center">
@@ -35,7 +37,7 @@ export default function App() {
 							<p className="text-gray-900">We're a dynamic group of individuals who are passionate about what we do.</p>
 						</div>
 						<div>
-							<div className="flex justify-center space-x-16">
+							<div className="flex justify-center space-x-12">
 							<TeamMemberCard image={portrait1} name={`Vasiliy Alyosha`} description={`Senior Designer`}>
 							</TeamMemberCard>
 							<TeamMemberCard image={portrait2} name={`Byron Darrell`} description={`Principal Designer`}>
@@ -60,6 +62,10 @@ export default function App() {
 							</button>
 					</main>
 				</div>
+
+				<div className="container flex justify-between pb-5">
+          			<ThemeSwitch userPreference={data?.requestInfo.userPrefs.theme} />
+        		</div>
 			</div>
 		</Document>
 	)

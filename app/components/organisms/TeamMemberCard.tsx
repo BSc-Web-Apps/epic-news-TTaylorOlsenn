@@ -11,7 +11,7 @@ const TeamMemberCard = ({
 
 }: TeamMemberCardProps) => {
     return (
-        <div className="py-8 px-10 rounded-xl bg-gray-700 w-70 h-90">
+        <div className="py-8 px-10 rounded-xl bg-gray-700 w-68 h-90">
             <img
                 className="w-40 h-40 rounded-full mx-auto border-4"
                 src={image}
