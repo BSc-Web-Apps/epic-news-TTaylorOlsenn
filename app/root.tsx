@@ -5,6 +5,8 @@ import { GeneralErrorBoundary } from './components/error-boundary.tsx'
 import Document from './components/shared-layout/Document.tsx'
 import { useNonce } from './utils/nonce-provider.ts'
 import rootLinkElements from './utils/providers/rootLinkElements.ts'
+import HeaderWithSearch from './components/organisms/HeaderWithSearch'
+import FooterMenuRight from './components/organisms/Footer/FooterMenuRight.tsx'
 import HeroCallToAction from '~/components/organisms/Hero/HeroCallToAction.tsx'
 import heroImage from '~/assets/jpg/sample-hero.jpg'
 import TeamMemberCard from '#app/components/organisms/TeamMemberCard.tsx'
@@ -29,6 +31,8 @@ export default function App() {
 	return (
 		<Document theme={theme} nonce={nonce} honeyProps={data?.honeyProps}>
 			<div className="flex h-screen flex-col justify-between">
+				<HeaderWithSearch />
+
 				<div className="flex-1 bg-blue-500">
 					<main className="grid h-full place-items-center">
 						<h1 className="p-8 text-mega">Epic News</h1>
@@ -62,7 +66,7 @@ export default function App() {
 							</button>
 					</main>
 				</div>
-
+				<FooterMenuRight />
 				<div className="container flex justify-between pb-5">
           			<ThemeSwitch userPreference={data?.requestInfo.userPrefs.theme} />
         		</div>
