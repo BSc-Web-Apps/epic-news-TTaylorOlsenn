@@ -1,8 +1,8 @@
 import { Link, NavLink } from 'react-router'
+import logo from '#app/assets/png/epic-news-logo.png'
 import SocialMediaButtons from '#app/components/molecules/SocialMediaButtons'
 import { Button } from '#app/components/ui/button.tsx'
 import { type FooterProps } from './FooterBasic'
-import logo from '#app/assets/png/epic-news-logo.png'
 
 const FooterMenuRight = ({
 	companyName = 'EPIC NEWS',
