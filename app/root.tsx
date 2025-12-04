@@ -25,7 +25,7 @@ export default function App() {
 			<div className="flex h-screen flex-col justify-between">
 				<HeaderWithSearch />
 
-				<div className="flex-1 bg-blue-950">
+				<div className="flex-1">
 					<Outlet />
 				</div>
 				<FooterMenuRight />
