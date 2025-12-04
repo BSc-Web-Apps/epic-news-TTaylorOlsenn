@@ -1,6 +1,7 @@
 import { invariant } from '@epic-web/invariant'
 import { type LoaderFunctionArgs, data, useLoaderData } from 'react-router'
 import { toTitleCase } from '~/utils/stringUtils.ts'
+import { prisma } from '~/utils/db.server.ts'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const { category } = params
@@ -8,13 +9,16 @@ export async function loader({ params }: LoaderFunctionArgs) {
 	invariant(typeof category === 'string', 'Category not found')
 	const categoryTitle = toTitleCase(category)
 
-	return data({ categoryTitle })
-}
+	const allArticles = await prisma.article.findMany({
+		select: {
+			id: true,
+			title: true,
+			category: { select: { name: true } },
+			images: { select: { id: true } },
+		},
+	})
 
-const WireframeBlock = () => {
-	return (
-		<div className="h-72 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-700" />
-	)
+	return data({ categoryTitle, allArticles })
 }
 
 export default function NewsCategoryPage() {
@@ -23,20 +27,8 @@ export default function NewsCategoryPage() {
 	return (
 		<div className="container py-16">
 			<h2 className="text-h2">{categoryTitle}</h2>
-			<div className="grid gap-6 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-			</div>
-			<div className="grid gap-6 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-				<WireframeBlock />
-			</div>
+
+			<div className="grid gap-6 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"></div>
 		</div>
 	)
 }
