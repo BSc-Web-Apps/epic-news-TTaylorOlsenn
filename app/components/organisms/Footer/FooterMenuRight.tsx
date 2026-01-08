@@ -1,12 +1,12 @@
 import { Link, NavLink } from 'react-router'
-import logo from '#app/assets/svg/icon-placeholder.svg'
+import logo from '#app/assets/png/epic-news-logo.png'
 import SocialMediaButtons from '#app/components/molecules/SocialMediaButtons'
 import { Button } from '#app/components/ui/button.tsx'
 import { type FooterProps } from './FooterBasic'
 
 const FooterMenuRight = ({
-	companyName = 'CHANGE THIS TO YOUR COMPANY NAME!',
-	altText = 'Our company logo',
+	companyName = 'EPIC NEWS',
+	altText = 'Epic News Logo',
 }: FooterProps) => {
 	return (
 		<footer className="bg-secondary dark:bg-dark-secondary lg:py-16">
@@ -17,15 +17,27 @@ const FooterMenuRight = ({
 
 				<div className="lg:flex">
 					<div className="text-secondary-foreground dark:text-dark-secondary-foreground flex items-start gap-6 py-8 font-bold lg:mr-24">
-						<div>
-							<NavLink to="#">Nav Label</NavLink>
-						</div>
-						<div>
-							<NavLink to="#">Nav Label</NavLink>
-						</div>
-						<div>
-							<NavLink to="#">Nav Label</NavLink>
-						</div>
+						<Link
+							to="/news"
+							prefetch="intent"
+							className="text-muted-foreground hover:text-foreground text-base font-semibold transition"
+						>
+							News
+						</Link>
+						<Link
+							to="/about-us"
+							prefetch="intent"
+							className="text-muted-foreground hover:text-foreground text-base font-semibold transition"
+						>
+							About Us
+						</Link>
+						<Link
+							to="/contact-us"
+							prefetch="intent"
+							className="text-muted-foreground hover:text-foreground text-base font-semibold transition"
+						>
+							Contact Us
+						</Link>
 					</div>
 
 					<div className="flex items-center gap-6">
