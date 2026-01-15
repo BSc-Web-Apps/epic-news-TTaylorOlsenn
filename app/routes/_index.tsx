@@ -4,7 +4,7 @@ import portrait2 from '#app/assets/jpg/portrait-02.jpg'
 import portrait3 from '#app/assets/jpg/portrait-03.jpg'
 import HeroCallToAction from '#app/components/organisms/Hero/HeroCallToAction.tsx'
 import TeamMemberCard from '#app/components/organisms/TeamMemberCard.tsx'
-import heroImage from '~/assets/jpg/sample-hero.jpg'
+import heroImage from '~/assets/jpg/happy-reporer.jpg'
 import ArticleCard from '~/components/organisms/ArticleCard.tsx'
 import { prisma } from '~/utils/db.server.ts'
 
