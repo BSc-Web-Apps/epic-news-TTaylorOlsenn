@@ -34,6 +34,7 @@ export default function NewsCategoryPage() {
 						key={article.id}
 						title={article.title}
 						category={article.category?.name}
+						objectKey={article.images[0]?.objectKey}
 					/>
 				))}
 			</div>
