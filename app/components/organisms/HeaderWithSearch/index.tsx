@@ -1,9 +1,9 @@
 import { useMatches, Link } from 'react-router'
+import logo from '#app/assets/png/epic-news-logo.png'
 import { SearchBar } from '#app/components/search-bar.tsx'
 import { Button } from '#app/components/ui/button.tsx'
 import { UserDropdown } from '#app/components/user-dropdown.tsx'
 import { useOptionalUser } from '#app/utils/user.ts'
-import logo from '#app/assets/png/epic-news-logo.png'
 
 export default function HeaderWithSearch() {
 	const matches = useMatches()
