@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => [{ title: 'Epic News' }]
 export async function loader() {
 	const techArticles = await prisma.article.findMany({
 		where: {
-			isPublished: true,
+			isPublished: false,
 			category: { slug: 'technology' },
 		},
 		select: {
@@ -26,7 +26,7 @@ export async function loader() {
 
 	const entertainmentArticles = await prisma.article.findMany({
 		where: {
-			isPublished: true,
+			isPublished: false,
 			category: { slug: 'entertainment' },
 		},
 		select: {
@@ -39,7 +39,7 @@ export async function loader() {
 
 	const businessArticles = await prisma.article.findMany({
 		where: {
-			isPublished: true,
+			isPublished: false,
 			category: { slug: 'business' },
 		},
 		select: {
@@ -50,12 +50,31 @@ export async function loader() {
 		},
 	})
 
-	return data({ techArticles, entertainmentArticles, businessArticles })
+	const filteredArticles = await prisma.article.findMany({
+		where: { isPublished: false },
+		select: {
+			id: true,
+			title: true,
+			category: { select: { name: true } },
+			images: { select: { id: true, objectKey: true } },
+		},
+	})
+
+	return data({
+		techArticles,
+		entertainmentArticles,
+		businessArticles,
+		filteredArticles,
+	})
 }
 
 export default function Index() {
-	const { techArticles, entertainmentArticles, businessArticles } =
-		useLoaderData<typeof loader>()
+	const {
+		techArticles,
+		entertainmentArticles,
+		businessArticles,
+		filteredArticles,
+	} = useLoaderData<typeof loader>()
 	const hasTechArticles = techArticles.length > 0
 	const hasEntertainmentArticles = entertainmentArticles.length > 0
 	const hasBusinessArticles = businessArticles.length > 0
@@ -172,8 +191,8 @@ export default function Index() {
 				<h2 className="text-h2 mb-8 font-normal">Latest news</h2>
 
 				<div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
-					{hasTechArticles ? (
-						techArticles.map((article) => (
+					{filteredArticles ? (
+						filteredArticles.map((article) => (
 							<ArticleCard
 								key={article.id}
 								articleId={article.id}

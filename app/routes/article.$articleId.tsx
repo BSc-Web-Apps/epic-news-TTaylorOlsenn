@@ -1,6 +1,8 @@
 import { invariant } from '@epic-web/invariant'
 import { type LoaderFunctionArgs, data, useLoaderData } from 'react-router'
 import { prisma } from '~/utils/db.server.ts'
+import { getArticleImgSrc } from '~/utils/misc.tsx'
+import logo from '#app/assets/png/epic-news-logo.png'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const { articleId } = params
@@ -20,6 +22,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
 		},
 	})
 
+	invariant(article, 'Article not found')
+
 	return data({ article })
 }
 
@@ -37,9 +41,26 @@ const ArticleNotFound = () => {
 export default function ArticleRoute() {
 	const { article } = useLoaderData<typeof loader>()
 
+	const imageSrc = article.images[0]?.objectKey
+		? getArticleImgSrc(article.images[0].objectKey)
+		: logo
+
 	return article ? (
 		<div className="container py-16">
 			<h2 className="text-h2 pb-8">{article.title}</h2>
+			{imageSrc && (
+				<div className="mb-8">
+					<img
+						src={imageSrc}
+						alt={article.title}
+						className="max-h-[500px] w-full rounded-xl object-cover"
+					/>
+				</div>
+			)}
+
+			<div className="prose max-w-none text-lg">
+				<p>{article.content}</p>
+			</div>
 		</div>
 	) : (
 		<ArticleNotFound />

@@ -18,7 +18,7 @@ export default function NewsRoute() {
 					</NavLink>
 
 					<NavLink
-						to="sports"
+						to="entertainment"
 						prefetch="intent"
 						className={({ isActive }) =>
 							`${isActive ? 'text-blue-300 underline underline-offset-8' : 'text-blue-500'}`
@@ -28,7 +28,7 @@ export default function NewsRoute() {
 					</NavLink>
 
 					<NavLink
-						to="entertainment"
+						to="business"
 						prefetch="intent"
 						className={({ isActive }) =>
 							`${isActive ? 'text-blue-300 underline underline-offset-8' : 'text-blue-500'}`

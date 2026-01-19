@@ -33,10 +33,12 @@ export default function NewsCategoryPage() {
 	return (
 		<div className="container py-16">
 			<h2 className="text-h2">{category}</h2>
+
 			<div className="grid gap-6 py-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 				{filteredArticles.map((article) => (
 					<ArticleCard
 						key={article.id}
+						articleId={article.id}
 						title={article.title}
 						category={article.category?.name}
 						objectKey={article.images[0]?.objectKey}
