@@ -21,7 +21,7 @@ const HeroCallToAction = ({
 				<img
 					src={image}
 					alt="A hero with a call to action."
-					className="absolute min-h-full min-w-full object-cover object-center"
+					className="absolute min-h-full min-w-full rounded-xl object-cover object-center"
 				/>
 			</div>
 			<div className="relative flex h-96 items-center justify-center md:h-[32rem] md:w-1/2">
