@@ -13,7 +13,7 @@ export const meta: MetaFunction = () => [{ title: 'Epic News' }]
 export async function loader() {
 	const techArticles = await prisma.article.findMany({
 		where: {
-			isPublished: false,
+			isPublished: true,
 			category: { slug: 'technology' },
 		},
 		select: {
@@ -26,7 +26,7 @@ export async function loader() {
 
 	const entertainmentArticles = await prisma.article.findMany({
 		where: {
-			isPublished: false,
+			isPublished: true,
 			category: { slug: 'entertainment' },
 		},
 		select: {
@@ -39,7 +39,7 @@ export async function loader() {
 
 	const businessArticles = await prisma.article.findMany({
 		where: {
-			isPublished: false,
+			isPublished: true,
 			category: { slug: 'business' },
 		},
 		select: {
@@ -51,7 +51,7 @@ export async function loader() {
 	})
 
 	const filteredArticles = await prisma.article.findMany({
-		where: { isPublished: false },
+		where: { isPublished: true },
 		select: {
 			id: true,
 			title: true,
